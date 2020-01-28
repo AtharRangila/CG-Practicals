@@ -1,0 +1,69 @@
+#include<iostream.h>
+#include<graphics.h>
+#include<math.h>
+#include<conio.h>
+#include<dos.h>
+
+void dispCircle(int xc_,int yc_, int x, int y) {
+
+    putpixel(xc_+x, yc_+y, WHITE);
+    delay(20);
+    putpixel(xc_-x, yc_+y, WHITE);
+    delay(20);
+    putpixel(xc_+x, yc_-y, WHITE);
+    delay(20);
+    putpixel(xc_-x, yc_-y, WHITE);
+    delay(20);
+    putpixel(xc_+y, yc_+x, WHITE);
+    delay(20);
+    putpixel(xc_-y, yc_+x, WHITE);
+    delay(20);
+    putpixel(xc_+y, yc_-x, WHITE);
+    delay(20);
+    putpixel(xc_-y, yc_-x, WHITE);
+
+    delay(20);
+									 x
+}
+
+void Bres(int _x, int _y, int _r)
+
+{	int x = 0, y = _r;
+	int d = 3 - 2 * _r;
+
+	dispCircle(_x, _y, x, y);
+
+	while(y >= x)
+	{
+		x++;
+
+		if(d > 0){
+			y--;
+			d = d + 4 * (x - y) + 10;
+		}
+
+		else{
+			d = d + 4 * x + 6;
+		}
+
+		dispCircle(_x, _y, x, y);
+	}
+}
+
+int main(){
+
+	int gd = DETECT, gm;
+	initgraph(&gd, &gm,"c:\\turboc3\\bgi ");
+
+	Bres(150,180,57);
+
+
+	Bres(200,220,47);
+
+
+
+	getch();
+	closegraph();
+	
+	return 0;
+}
